@@ -27,7 +27,7 @@ import javax.persistence.Table;
 public class Product implements Serializable {
 
 	/**
-	 * 
+	 * Default Serial Version
 	 */
 	private static final long serialVersionUID = 1L;
 

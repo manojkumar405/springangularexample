@@ -9,6 +9,7 @@
 	<description>This project demonstrates spring rest services integrated with angular js</description>
 	
 	<properties>
+		<aspectj.version>1.8.7</aspectj.version>
 		<spring.version>4.2.6.RELEASE</spring.version>
 		<hibernate.version>5.1.0.Final</hibernate.version>
 		<mysql.version>5.1.14</mysql.version>
