@@ -3,8 +3,6 @@
  */
 package org.springangularexample.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springangularexample.entities.support.BaseEntity;
 
 /**
  * <p>
@@ -24,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "PRODUCT")
-public class Product implements Serializable {
+public class Product implements BaseEntity {
 
 	/**
 	 * Default Serial Version

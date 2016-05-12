@@ -3,6 +3,8 @@
  */
 package org.springangularexample.dao.interfaces;
 
+import java.util.List;
+
 import org.springangularexample.entities.Product;
 
 /**
@@ -33,6 +35,8 @@ public interface ProductDAO {
 	 * @return - The Persistent {@link Product} instance.
 	 */
 	public Product retrieveProduct(final Product tProduct);
+
+	public List<Product> retrieveAllProducts();
 
 	/**
 	 * <p>

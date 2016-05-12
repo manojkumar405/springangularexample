@@ -3,6 +3,8 @@
  */
 package org.springangularexample.service.interfaces;
 
+import java.util.List;
+
 import org.springangularexample.entities.Product;
 
 /**
@@ -19,8 +21,9 @@ public interface ProductService {
 	 * 
 	 * @param tProduct
 	 *            - the Transient {@link Product} to add.
+	 * @return 
 	 */
-	public void addProduct(final Product tProduct);
+	public Product addProduct(final Product tProduct);
 
 	/**
 	 * <p>
@@ -33,6 +36,8 @@ public interface ProductService {
 	 * @return - The Persistent {@link Product} instance.
 	 */
 	public Product retrieveProduct(final Product tProduct);
+	
+	public List<Product> retrieveAllProducts();
 
 	/**
 	 * <p>
@@ -43,5 +48,5 @@ public interface ProductService {
 	 * @param pProduct
 	 *            - the Persistent {@link Product} to update.
 	 */
-	public void updateProduct(final Product pProduct);
+	public Product updateProduct(final Product pProduct);
 }

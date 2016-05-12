@@ -3,6 +3,8 @@
  */
 package org.springangularexample.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springangularexample.dao.interfaces.ProductDAO;
@@ -39,6 +41,13 @@ public class ProductHibernateDAOImpl implements ProductDAO {
 	@Override
 	public void updateProduct(Product pProduct) {
 		getCurrentSession().update(pProduct);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Product> retrieveAllProducts() {
+		final Session session = getCurrentSession();
+		return (List<Product>) session.createQuery("select p from Product p order by p.name").list();
 	}
 
 	private Session getCurrentSession() {

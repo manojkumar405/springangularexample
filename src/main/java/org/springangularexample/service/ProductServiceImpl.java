@@ -3,6 +3,8 @@
  */
 package org.springangularexample.service;
 
+import java.util.List;
+
 import org.springangularexample.dao.interfaces.ProductDAO;
 import org.springangularexample.entities.Product;
 import org.springangularexample.service.interfaces.ProductService;
@@ -36,21 +38,40 @@ public class ProductServiceImpl implements ProductService {
 		super();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	public void addProduct(Product tProduct) {
+	public Product addProduct(final Product tProduct) {
 		productDAO.addProduct(tProduct);
+		return tProduct;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	public Product retrieveProduct(Product tProduct) {
+	public Product retrieveProduct(final Product tProduct) {
 		return productDAO.retrieveProduct(tProduct);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	public void updateProduct(Product tProduct) {
+	public List<Product> retrieveAllProducts() {
+		return productDAO.retrieveAllProducts();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Product updateProduct(final Product tProduct) {
 		final Product pProduct = productDAO.retrieveProduct(tProduct);
 		BeanUtils.copyProperties(tProduct, pProduct);
 		productDAO.updateProduct(pProduct);
+		return pProduct;
 	}
 
 }
