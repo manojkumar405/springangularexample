@@ -11,6 +11,7 @@ import org.springangularexample.service.interfaces.ProductService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -42,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
 	 * {@inheritDoc}
 	 */
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public Product addProduct(final Product tProduct) {
 		productDAO.addProduct(tProduct);
 		return tProduct;
@@ -51,6 +53,19 @@ public class ProductServiceImpl implements ProductService {
 	 * {@inheritDoc}
 	 */
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public Product updateProduct(final Product tProduct) {
+		final Product pProduct = productDAO.retrieveProduct(tProduct);
+		BeanUtils.copyProperties(tProduct, pProduct);
+		productDAO.updateProduct(pProduct);
+		return pProduct;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public Product retrieveProduct(final Product tProduct) {
 		return productDAO.retrieveProduct(tProduct);
 	}
@@ -59,19 +74,8 @@ public class ProductServiceImpl implements ProductService {
 	 * {@inheritDoc}
 	 */
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Product> retrieveAllProducts() {
 		return productDAO.retrieveAllProducts();
 	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Product updateProduct(final Product tProduct) {
-		final Product pProduct = productDAO.retrieveProduct(tProduct);
-		BeanUtils.copyProperties(tProduct, pProduct);
-		productDAO.updateProduct(pProduct);
-		return pProduct;
-	}
-
 }

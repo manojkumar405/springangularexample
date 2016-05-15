@@ -8,18 +8,17 @@
 	
 	<context:component-scan base-package="org.springangularexample.dao" />
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan"
-			value="com.springangularexample.entities" />
-		<property name="entityInterceptor" ref="timeStampableInterceptor"></property>
+		<property name="packagesToScan" value="org.springangularexample.entities" />
+		<!-- <property name="entityInterceptor" ref="timeStampableInterceptor"></property> -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
 			</props>
 		</property>
 	</bean>
-	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">

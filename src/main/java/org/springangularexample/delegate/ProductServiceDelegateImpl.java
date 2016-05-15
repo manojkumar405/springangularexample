@@ -4,7 +4,6 @@
 package org.springangularexample.delegate;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springangularexample.converters.support.Converter;
 import org.springangularexample.delegate.interfaces.IProductServiceDelegate;
