@@ -1,0 +1,6 @@
+<!-- <script src="resources/js/controllers/AlertMessageController.js"></script>-->
+<div ng-controller="AlertMessageController" ng-show="alert!=null">
+	<div class="alert" role="alert" ng-class="alert.type">
+		<div class="text-center">{{alert.message}}</div>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+<div>
+	<!-- <div class="modal-header">
+		<h3 class="modal-title">Edit {{product.name}}</h3>
+	</div> -->
+	<div class="panel panel-primary" ng-init="onLoad()">
+	    <div class="panel-heading clearfix">
+	        <button type="button" class="close" ng-click="close()"
+	            aria-hidden="true">&times;</button>
+	        <h4 class="panel-title pull-left">Edit {{product.name}}</h4>
+	    </div>
+	</div>
+	<div class="form-horizontal">
+		<div class="modal-body">
+			<alert-message></alert-message>
+			<div class="form-group">
+				<label for="name" class="control-label col-xs-2 col-md-2">Name:</label>
+				<input name="name" class="col-xs-3 col-md-3" type="text" ng-model="product.name" required />
+            </div>
+			<div class="form-group">
+				<label for="description" class="control-label col-xs-2 col-md-2">Description:</label>
+				<textarea name="description"  spellcheck="true" rows="5" style="resize:none" class="col-xs-9 col-md-9" ng-model="product.description" required></textarea>
+			</div>
+			
+            <div class="form-group">
+                <label for="price" class="control-label col-xs-3 col-md-3 col-xs-pull-1 col-md-pull-1">Price:</label>
+                <input name="price" class="col-xs-3 col-md-3 col-xs-pull-1 col-md-pull-1" type="number" ng-model="product.price" min="0" required> 
+				<label for="count" class="control-label col-xs-3 col-md-3 col-xs-pull-1 col-md-pull-1">Quantity:</label> 
+				<input name="count" class="col-xs-3 col-md-3 col-xs-pull-1 col-md-pull-1" type="number" ng-model="product.quantity" min="0" integer required> 
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-default" type="reset">Reset</button>
+			<button class="btn btn-info" ng-click="updateProduct()">Submit</button>
+		</div>
+   </div>
+</div>
