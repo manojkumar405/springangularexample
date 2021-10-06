@@ -17,32 +17,23 @@ public class ProductDTO implements BaseDTO<Product> {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Integer productId;
+	private String productId;
 
 	private String name;
 
 	private String description;
 
-	private Integer quantity;
+	private Long quantity;
 
 	private Double price;
 
 	private Status status;
 
-	/**
-	 * <p>
-	 * Default Constructor
-	 * </p>
-	 */
-	public ProductDTO() {
-		super();
-	}
-
-	public Integer getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
@@ -62,11 +53,11 @@ public class ProductDTO implements BaseDTO<Product> {
 		this.description = description;
 	}
 
-	public Integer getQuantity() {
+	public Long getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(Long quantity) {
 		this.quantity = quantity;
 	}
 

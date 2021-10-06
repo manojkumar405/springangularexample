@@ -8,10 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springangularexample.entities.support.BaseEntity;
 
 /**
@@ -32,9 +32,10 @@ public class Product implements BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "uuid.hex")
+	@GenericGenerator(name = "uuid.hex", strategy = "uuid.hex")
 	@Column(name = "PRODUCT_ID")
-	private Integer productId;
+	private String productId;
 
 	@Column(name = "NAME")
 	private String name;
@@ -43,7 +44,7 @@ public class Product implements BaseEntity {
 	private String description;
 
 	@Column(name = "QUANTITY")
-	private Integer quantity;
+	private Long quantity;
 
 	@Column(name = "PRICE")
 	private Double price;
@@ -61,11 +62,11 @@ public class Product implements BaseEntity {
 		super();
 	}
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
@@ -85,11 +86,11 @@ public class Product implements BaseEntity {
 		this.description = description;
 	}
 
-	public Integer getQuantity() {
+	public Long getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(Long quantity) {
 		this.quantity = quantity;
 	}
 

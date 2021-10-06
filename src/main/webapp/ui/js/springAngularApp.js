@@ -47,4 +47,4 @@ springAngularApp.config(
 				});
              }
 	]);
-springAngularApp.constant('baseURL', '/springangularexample/api');
+springAngularApp.constant('baseURL', '/api');
