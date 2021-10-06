@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@RequestMapping(path = "/products", produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/api/products", produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
 public class ProductRestController {
 
 	@Autowired
@@ -40,7 +40,7 @@ public class ProductRestController {
 	}
 
 	@RequestMapping(path = "/{productId}", method = RequestMethod.GET)
-	public GenericResponseDTO<ProductDTO> retrieveProduct(@PathVariable("productId") final Integer productId) {
+	public GenericResponseDTO<ProductDTO> retrieveProduct(@PathVariable("productId") final String productId) {
 		final ProductDTO tProductDTO = new ProductDTO();
 		tProductDTO.setProductId(productId);
 		return this.delegate.retrieveProduct(tProductDTO);

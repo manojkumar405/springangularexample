@@ -1,4 +1,5 @@
-	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.mylearningsinjava</groupId>
@@ -6,21 +7,16 @@
 	<packaging>war</packaging>
 	<name>springangularexample</name>
 	<description>This project demonstrates spring rest services integrated with angular js</description>
-	
-	
+
+
 	<!-- Inherit defaults from Spring Boot -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.5.5</version>
 	</parent>
-	
+
 	<properties>
-		<aspectj.version>1.8.7</aspectj.version>
-		<hibernate.version>5.1.0.Final</hibernate.version>
-		<mysql.version>5.1.14</mysql.version>
-		<dbcp2.version>2.1</dbcp2.version>
-		<jackson.version>2.9.10.3</jackson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
@@ -38,21 +34,15 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.version}</version>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<scope>12.2.0.1</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>
-			<version>${dbcp2.version}</version>
 		</dependency>
-		
-		
-		
-		
 	</dependencies>
-	<version>1.0</version>
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
