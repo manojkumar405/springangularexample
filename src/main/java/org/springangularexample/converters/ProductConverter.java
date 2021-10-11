@@ -3,7 +3,7 @@
  */
 package org.springangularexample.converters;
 
-import org.springangularexample.converters.support.AbstractConverter;
+import org.springangularexample.converters.support.Converter;
 import org.springangularexample.dto.ProductDTO;
 import org.springangularexample.entities.Product;
 import org.springframework.beans.BeanUtils;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-public class ProductConverter extends AbstractConverter<ProductDTO, Product> {
+public class ProductConverter implements Converter<ProductDTO, Product> {
 
 	/**
 	 * <p>

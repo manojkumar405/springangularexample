@@ -4,7 +4,6 @@
 package org.springangularexample.delegate.interfaces;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springangularexample.dto.GenericResponseDTO;
 import org.springangularexample.dto.ProductDTO;

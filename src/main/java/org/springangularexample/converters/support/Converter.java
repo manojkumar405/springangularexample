@@ -4,6 +4,8 @@
 package org.springangularexample.converters.support;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Objects;
 
 import org.springangularexample.dto.support.BaseDTO;
 import org.springangularexample.entities.support.BaseEntity;
@@ -25,8 +27,7 @@ public interface Converter<D extends BaseDTO<E>, E extends BaseEntity> {
 	 * Converts an {@link BaseEntity} into it's Corresponding {@link BaseDTO}
 	 * </p>
 	 * 
-	 * @param entity
-	 *            - the {@link BaseEntity} to be converted to DTO.
+	 * @param entity - the {@link BaseEntity} to be converted to DTO.
 	 * @return - the {@link BaseDTO} of the given Entity.
 	 */
 	public D convertEntity(final E entity);
@@ -36,23 +37,24 @@ public interface Converter<D extends BaseDTO<E>, E extends BaseEntity> {
 	 * Converts an {@link BaseDTO} into it's Corresponding {@link BaseDTO}
 	 * </p>
 	 * 
-	 * @param entity
-	 *            - the {@link BaseDTO} to be converted to Entity.
+	 * @param entity - the {@link BaseDTO} to be converted to Entity.
 	 * @return - the {@link BaseEntity} of the given Entity.
 	 */
 	public E convertDTO(final D dto);
 
 	/**
 	 * <p>
-	 * Converts a {@link Collection} of {@link BaseEntity} into it's
-	 * Corresponding {@link Collection} of {@link BaseDTO}
+	 * Converts a {@link Collection} of {@link BaseEntity} into it's Corresponding
+	 * {@link Collection} of {@link BaseDTO}
 	 * </p>
 	 * 
-	 * @param entity
-	 *            - the Collection of {@link BaseEntity} to be converted to DTO.
+	 * @param entity - the Collection of {@link BaseEntity} to be converted to DTO.
 	 * @return - the Collection {@link BaseDTO} of the given Entity.
 	 */
-	public Collection<D> convertEntityCollection(final Collection<E> entityCollection);
+	public default Collection<D> convertEntityCollection(final Collection<E> entityCollection) {
+		return Objects.nonNull(entityCollection) && entityCollection.isEmpty() ? Collections.emptyList()
+				: entityCollection.stream().map(this::convertEntity).toList();
+	}
 
 	/**
 	 * <p>
@@ -60,9 +62,11 @@ public interface Converter<D extends BaseDTO<E>, E extends BaseEntity> {
 	 * {@link Collection} of {@link BaseDTO}
 	 * </p>
 	 * 
-	 * @param entity
-	 *            - the Collection of {@link BaseDTO} to be converted to Entity.
+	 * @param entity - the Collection of {@link BaseDTO} to be converted to Entity.
 	 * @return - the Collection {@link BaseEntity} of the given Entity.
 	 */
-	public Collection<E> convertDTOCollection(final Collection<D> dtoCollection);
+	public default Collection<E> convertDTOCollection(final Collection<D> dtoCollection) {
+		return Objects.nonNull(dtoCollection) && dtoCollection.isEmpty() ? Collections.emptyList()
+				: dtoCollection.stream().map(this::convertDTO).toList();
+	}
 }

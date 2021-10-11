@@ -12,17 +12,10 @@ import org.junit.jupiter.api.Test;
  */
 public class TestStringUtils {
 
-	/**
-	 * 
-	 */
-	public TestStringUtils() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	@Test
-	public void test()
-	{
-		System.out.println(StringUtils.capitalize(StringUtils.join(StringUtils.splitByCharacterTypeCamelCase("sequenceNumber"), ' ')));
+	public void test() {
+		System.out.println(StringUtils
+				.capitalize(StringUtils.join(StringUtils.splitByCharacterTypeCamelCase("sequenceNumber"), ' ')));
 	}
 
 }
