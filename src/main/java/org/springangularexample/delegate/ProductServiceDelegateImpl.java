@@ -4,6 +4,7 @@
 package org.springangularexample.delegate;
 
 import java.util.Collection;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springangularexample.converters.support.Converter;
 import org.springangularexample.delegate.interfaces.IProductServiceDelegate;
@@ -12,7 +13,11 @@ import org.springangularexample.dto.ProductDTO;
 import org.springangularexample.entities.Product;
 import org.springangularexample.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 /**
@@ -25,8 +30,11 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS, scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ProductServiceDelegateImpl implements IProductServiceDelegate {
 
+	private static AtomicInteger counter = new AtomicInteger();
+	
 	@Autowired
 	private Converter<ProductDTO, Product> productConverter;
 
@@ -43,6 +51,7 @@ public class ProductServiceDelegateImpl implements IProductServiceDelegate {
 	 */
 	public ProductServiceDelegateImpl() {
 		super();
+		System.out.println("No of instances of Delegate: " + counter.incrementAndGet());
 	}
 
 	@Override

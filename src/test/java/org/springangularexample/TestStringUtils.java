@@ -18,4 +18,9 @@ public class TestStringUtils {
 				.capitalize(StringUtils.join(StringUtils.splitByCharacterTypeCamelCase("sequenceNumber"), ' ')));
 	}
 
+	@Test
+	public void test1() {
+
+	}
+
 }

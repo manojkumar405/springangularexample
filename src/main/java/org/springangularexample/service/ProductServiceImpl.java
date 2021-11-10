@@ -11,6 +11,7 @@ import org.springangularexample.entities.Product;
 import org.springangularexample.service.interfaces.ProductService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -77,6 +78,7 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
+	@Cacheable("default")
 	public List<Product> retrieveAllProducts() {
 		return productDAO.findAll();
 	}
